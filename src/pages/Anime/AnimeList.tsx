@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useQuery } from '@apollo/client/react';
 import { Link } from 'react-router-dom';
 import AnimeWrapper from '../../layout/AnimeWrapper';
+import AnimeContainer from '../../layout/AnimeContainer';
 
 interface AnimeType {
   id: number;
@@ -12,19 +13,19 @@ interface AnimeType {
     large: string;
     medium: string;
     extraLarge: string;
-    _typename: string;
+    __typename: string;
   };
   description: string;
   popularity: number;
   title: {
     romaji: string;
-    _typename: string;
+    __typename: string;
   };
 }
 
 function AnimeList() {
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const animePerPage: number = 12;
+  const animePerPage: number = 10;
   const totalPages: number = 50;
 
   const handlePreviousPage = () => {
@@ -51,18 +52,17 @@ function AnimeList() {
     return (
       <AnimeWrapper>
         <h1 className="mb-8 text-5xl font-bold ">Trending Anime</h1>
-        <div className="grid grid-cols-3 gap-8">
+        <AnimeContainer>
           {data?.page?.media?.map((anime: AnimeType, index: number) => {
-            <Link to={`/anime/${anime.id}`}>
-              <div key={index} className="flex flex-col items-center ">
-                <img src={anime.coverImage.large} className="w-[300px] h-[400px] border rounded-xl " />
-                <p className="mt-2 text-xl font-semibold">{anime.title.romaji}</p>
-              </div>
-              <div className="flex flex-col items-center ">
-                <div className="w-[300px] h-[400px] border border-red-500 rounded-xl "></div>
-                <p className="mt-2 text-xl font-semibold">{anime.title.romaji}</p>
-              </div>
-            </Link>;
+            console.log(anime.coverImage.large);
+            return (
+              <Link to={`/anime/${anime.id} `}>
+                <div key={index} className="flex flex-col items-center ">
+                  <img alt="Cover Image" src={anime.coverImage.large} className="w-[300px] h-[400px] border rounded-xl " />
+                  <p className="mt-2 text-xl font-semibold">{anime.title.romaji}</p>
+                </div>
+              </Link>
+            );
           })}
           <div className="flex flex-col items-center ">
             <div className="w-[300px] h-[400px] border border-red-500 rounded-xl "></div>
@@ -76,7 +76,7 @@ function AnimeList() {
             <div className="w-[300px] h-[400px] border border-red-500 rounded-xl "></div>
             <p className="mt-2 text-xl font-semibold">Anime List - Blabla</p>
           </div>
-        </div>
+        </AnimeContainer>
 
         <div className="justify-center mt-6 flex w-[1000px]">
           <button onClick={handlePreviousPage} disabled={currentPage === 1}>
