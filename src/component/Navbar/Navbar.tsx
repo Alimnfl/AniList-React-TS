@@ -1,12 +1,17 @@
 import { AiFillHome, AiOutlineBars, AiOutlinePlus } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
+import AddCollectionModal from '../Modal/AddCollectionModal';
 
 function Sidebar() {
+  const { addNewCollection, collections } = useAnimeCollections();
+
   return (
     <div className="flex flex-row items-center gap-5 text-white p-7">
       <AiOutlineBars size={30} />
-      <div className="text-xl font-bold ">Your Collection</div>
-      <AiOutlinePlus size={30} className="ml-[80px]" />
+      <h1 className="text-xl font-bold ">Your Collection</h1>
+      <AddCollectionModal collections={collections} onAddCollection={addNewCollection}>
+        <AiOutlinePlus size={30} className="ml-[80px]" />
+      </AddCollectionModal>
     </div>
   );
 }
