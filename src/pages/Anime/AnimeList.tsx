@@ -53,29 +53,17 @@ function AnimeList() {
       <AnimeWrapper>
         <h1 className="mb-8 text-5xl font-bold ">Trending Anime</h1>
         <AnimeContainer>
-          {data?.page?.media?.map((anime: AnimeType, index: number) => {
-            console.log(anime.coverImage.large);
+          {data?.Page?.media?.map((anime: AnimeType, index: number) => {
+            // console.log(anime.coverImage.large);
             return (
               <Link to={`/anime/${anime.id} `}>
-                <div key={index} className="flex flex-col items-center ">
-                  <img alt="Cover Image" src={anime.coverImage.large} className="w-[300px] h-[400px] border rounded-xl " />
-                  <p className="mt-2 text-xl font-semibold">{anime.title.romaji}</p>
+                <div key={index} className="flex flex-col ">
+                  <img alt="Cover Image" src={anime.coverImage.large} className="w-[350px] h-[500px] border rounded-xl " />
+                  <p className="mt-2 text-xl font-semibold w-[350px] flex items-center">{anime.title.romaji}</p>
                 </div>
               </Link>
             );
           })}
-          <div className="flex flex-col items-center ">
-            <div className="w-[300px] h-[400px] border border-red-500 rounded-xl "></div>
-            <p className="mt-2 text-xl font-semibold">Anime List - Blabla</p>
-          </div>
-          <div className="flex flex-col items-center ">
-            <div className="w-[300px] h-[400px] border border-red-500 rounded-xl "></div>
-            <p className="mt-2 text-xl font-semibold">Anime List - Blabla</p>
-          </div>
-          <div className="flex flex-col items-center ">
-            <div className="w-[300px] h-[400px] border border-red-500 rounded-xl "></div>
-            <p className="mt-2 text-xl font-semibold">Anime List - Blabla</p>
-          </div>
         </AnimeContainer>
 
         <div className="justify-center mt-6 flex w-[1000px]">
