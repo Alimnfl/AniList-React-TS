@@ -5,23 +5,7 @@ import { useQuery } from '@apollo/client/react';
 import { Link } from 'react-router-dom';
 import AnimeWrapper from '../../layout/AnimeWrapper';
 import AnimeContainer from '../../layout/AnimeContainer';
-
-interface AnimeType {
-  id: number;
-  coverImage: {
-    color: string;
-    large: string;
-    medium: string;
-    extraLarge: string;
-    __typename: string;
-  };
-  description: string;
-  popularity: number;
-  title: {
-    romaji: string;
-    __typename: string;
-  };
-}
+import { AnimeType } from '../../types/types';
 
 function AnimeList() {
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -57,9 +41,9 @@ function AnimeList() {
             // console.log(anime.coverImage.large);
             return (
               <Link to={`/anime/${anime.id} `}>
-                <div key={index} className="flex flex-col ">
-                  <img alt="Cover Image" src={anime.coverImage.large} className="w-[350px] h-[500px] border rounded-xl " />
-                  <p className="mt-2 text-xl font-semibold w-[350px] flex items-center">{anime.title.romaji}</p>
+                <div key={index} className="flex flex-col max-w-[250px] ">
+                  <img alt="Cover Image" src={anime.coverImage.large} className="object-cover  w-[400px] h-[500px] sm:w-[250px] sm:h-[400px] border rounded-xl " />
+                  <p className="md:w-[250px]  mt-2 text-xl font-semibold w-[350px] flex items-center">{anime.title.romaji}</p>
                 </div>
               </Link>
             );
