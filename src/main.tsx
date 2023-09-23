@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
 import { ApolloProvider, ApolloClient, NormalizedCacheObject, InMemoryCache } from '@apollo/client';
+import { AnimeCollectionsProvider } from './context/animeCollections.tsx';
 
 const cache: InMemoryCache = new InMemoryCache({
   typePolicies: {
@@ -31,7 +32,9 @@ const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <ApolloProvider client={client}>
-      <App />
+      <AnimeCollectionsProvider>
+        <App />
+      </AnimeCollectionsProvider>
     </ApolloProvider>
   </React.StrictMode>
 );
