@@ -5,7 +5,7 @@ interface LayoutProps {
 }
 
 function AnimeContainer({ children }: LayoutProps) {
-  return <div className="grid grid-cols-3 gap-8">{children}</div>;
+  return <div className="grid grid-cols-3 gap-8 md:grid-cols-4">{children}</div>;
 }
 
 export default AnimeContainer;
