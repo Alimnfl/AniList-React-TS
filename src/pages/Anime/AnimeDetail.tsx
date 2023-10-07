@@ -5,6 +5,8 @@ import AnimeWrapper from '../../layout/AnimeWrapper';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 import TruncateText from '../../component/TruncateText';
 import { useStripTags } from '../../hooks/useStripTags';
+import AddCollectionModal from '../../component/Modal/AddCollectionModal';
+import AddToCollection from '../../component/DropdownMenu/AddToCollection';
 
 function AnimeDetail() {
   const { id } = useParams();
@@ -24,14 +26,14 @@ function AnimeDetail() {
               </Link>
             </div>
             <div className="flex gap-6 ">
-              <div className="flex flex-col gap-3 w-[200px] items-center">
-                <img src={data.Media.coverImage.large} className="flex w-[200px] h-[300px] rounded-md" alt="" />
-                <p className="flex justify-center w-full p-2 font-semibold text-black bg-white rounded-md">Add to Collection</p>
+              <div className="flex flex-col gap-3 w-[250px] items-center">
+                <img src={data.Media.coverImage.large} className="flex w-[220px] h-[330px] rounded-md" alt="" />
+                <AddToCollection coverImage={data.Media.coverImage.large} anime={data.Media.title.romaji} idAnime={data.Media.id} />
               </div>
-              <div className="flex flex-col w-[1250px] gap-2 ">
-                <div className="flex flex-col gap-5">
+              <div className="flex flex-col w-[1000px] gap-2 ">
+                <div className="flex flex-col w-full gap-5">
                   <h1 className="text-3xl font-semibold">{data.Media.title.romaji}</h1>
-                  <p className="pr-8 text-base text-slate-500">
+                  <p className="pr-8 text-sm text-slate-500">
                     <TruncateText text={data.Media.description === null ? 'N/A' : useStripTags(data.Media.description)} maxLength={600} />
                   </p>
                 </div>
