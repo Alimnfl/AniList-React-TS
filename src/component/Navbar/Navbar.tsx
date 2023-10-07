@@ -20,14 +20,16 @@ function Sidebar() {
         </AddCollectionModal>
       </div>
 
-      {collections.map((collection: CollectionType) => (
-        <Link to={`/collection/${collection.id}`}>
-          <div key={collection.id}>
-            <img src={collection.animes.length !== 0 ? collection.animes[collection.animes.length - 1].coverImage : '/default.png'} />
-            <div>{collection.name}</div>
-          </div>
-        </Link>
-      ))}
+      <div className="mt-[30px] flex flex-col gap-6">
+        {collections.map((collection: CollectionType) => (
+          <Link to={`/collection/${collection.id}`}>
+            <div className="flex items-center gap-4" key={collection.id}>
+              <img className="w-12 h-48 rounded-md" src={collection.animes.length !== 0 ? collection.animes[collection.animes.length - 1].coverImage : '/default.png'} alt="Default" />
+              <div>{collection.name}</div>
+            </div>
+          </Link>
+        ))}
+      </div>
     </div>
   );
 }
