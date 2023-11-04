@@ -5,7 +5,6 @@ import AnimeWrapper from '../../layout/AnimeWrapper';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 import TruncateText from '../../component/TruncateText';
 import { useStripTags } from '../../hooks/useStripTags';
-import AddCollectionModal from '../../component/Modal/AddCollectionModal';
 import AddToCollection from '../../component/DropdownMenu/AddToCollection';
 
 function AnimeDetail() {
